@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import './App.css';
 import FeedbackOptions from './Feedback';
 import Statistics from './Statistics';
+import Notification from './Notification';
 import Panel from './Section';
 
 export class App extends Component {
@@ -34,13 +35,17 @@ export class App extends Component {
           />
         </Panel>
         <Panel title="Statistics">
-          <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={this.countTotalFeedback()}
-            positivePercentage={this.countPositiveFeedbackPercentage()}
-          />
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positivePercentage={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            <Notification message="No feedback given" />
+          )}
         </Panel>
       </Fragment>
     );

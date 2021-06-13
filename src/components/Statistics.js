@@ -5,7 +5,7 @@ const Statistics = ({ good, neutral, bad, total, positivePercentage }) => {
       <p>Neutral: {neutral}</p>
       <p>Bad: {bad}</p>
       <p>Total: {total}</p>
-      <p>Positive feedback: {positivePercentage.toFixed(2)}%</p>
+      <p>Positive feedback: {Math.round(positivePercentage)}%</p>
     </div>
   );
 };
